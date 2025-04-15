@@ -13,15 +13,15 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 const server = http.createServer(app);
-// const io = new Server(server, {
-//   // cors: {
-//   //   origin: process.env.NODE_ENV === 'development' 
-//   //     ? 'http://localhost:3000' 
-//   //     : 'https://nextgen-2025-backend.onrender.com', // Dynamic CORS based on environment
-//   //   methods: ['GET', 'POST'],
-//   //   credentials: true, // Allow cookies/auth if needed
-//   // },
-// });
+const io = new Server(server, {
+  cors: {
+    origin: process.env.NODE_ENV === 'development' 
+      ? 'http://localhost:3000' 
+      : 'https://nextgen-2025-backend.onrender.com', // Dynamic CORS based on environment
+    methods: ['GET', 'POST'],
+    credentials: true, // Allow cookies/auth if needed
+  },
+});
 
 // Middleware
 app.use(cors()); // Global CORS (can be restricted per route if needed)
@@ -60,15 +60,15 @@ app.use('/api/posts', postRoutes);
 app.use('/api/notifications', notificationRoutes);
 
 // Socket.IO
-// io.on('connection', (socket) => {
-//   console.log('A user connected:', socket.id);
-//   socket.on('disconnect', () => {
-//     console.log('User disconnected:', socket.id);
-//   });
-// });
+io.on('connection', (socket) => {
+  console.log('A user connected:', socket.id);
+  socket.on('disconnect', () => {
+    console.log('User disconnected:', socket.id);
+  });
+});
 
-// // Make io accessible to routes
-// app.set('socketio', io);
+// Make io accessible to routes
+app.set('socketio', io);
 
 // Connect to MongoDB
 mongoose
