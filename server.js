@@ -14,13 +14,13 @@ dotenv.config();
 const app = express();
 const server = http.createServer(app);
 // const io = new Server(server, {
-//   cors: {
-//     origin: process.env.NODE_ENV === 'development' 
-//       ? 'http://localhost:3000' 
-//       : 'https://nextgen-2025-backend.onrender.com', // Dynamic CORS based on environment
-//     methods: ['GET', 'POST'],
-//     credentials: true, // Allow cookies/auth if needed
-//   },
+//   // cors: {
+//   //   origin: process.env.NODE_ENV === 'development' 
+//   //     ? 'http://localhost:3000' 
+//   //     : 'https://nextgen-2025-backend.onrender.com', // Dynamic CORS based on environment
+//   //   methods: ['GET', 'POST'],
+//   //   credentials: true, // Allow cookies/auth if needed
+//   // },
 // });
 
 // Middleware
