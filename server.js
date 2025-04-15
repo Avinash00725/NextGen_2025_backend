@@ -60,15 +60,15 @@ app.use('/api/posts', postRoutes);
 app.use('/api/notifications', notificationRoutes);
 
 // Socket.IO
-io.on('connection', (socket) => {
-  console.log('A user connected:', socket.id);
-  socket.on('disconnect', () => {
-    console.log('User disconnected:', socket.id);
-  });
-});
+// io.on('connection', (socket) => {
+//   console.log('A user connected:', socket.id);
+//   socket.on('disconnect', () => {
+//     console.log('User disconnected:', socket.id);
+//   });
+// });
 
-// Make io accessible to routes
-app.set('socketio', io);
+// // Make io accessible to routes
+// app.set('socketio', io);
 
 // Connect to MongoDB
 mongoose
